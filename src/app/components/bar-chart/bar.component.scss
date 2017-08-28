@@ -1,0 +1,26 @@
+@import "../../shared/scss/vars";
+
+:host {
+  display: block;
+
+  .bar {
+    margin-bottom: map-get($vote-dimensions, margin);
+  }
+
+
+  &:last-of-type {
+    .bar {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.bar {
+  min-width: 100%;
+  height: map-get($vote-dimensions, height);
+  background-color: #eeeeee;
+}
+
+.bar-value {
+  height: map-get($vote-dimensions, height);
+}
