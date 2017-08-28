@@ -1,3 +1,6 @@
-<pre>
-  {{barData | json}}
-</pre>
+<div class="bar">
+  <div class="bar-value"
+       [style.backgroundColor]="barData.color || '#00FF00'"
+       [style.width]="barData.percent + '%'">
+  </div>
+</div>

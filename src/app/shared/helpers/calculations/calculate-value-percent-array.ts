@@ -1,11 +1,13 @@
 function evenRound( arr ) {
   const decimal = -~arr.map(function( a ){ return a % 1; })
     .reduce(function( a, b ){ return a + b; }); // Ceil of total sum of decimals
+
   for ( let i = 0; i < decimal; ++i ) {
     if (arr[ i ]) {
-      arr[ i ] = ++arr[ i ]; // compensate error by adding 1 the the first n items
+      arr[ i ] = ++arr[ i ]; // compensate error by adding 1 to the first n items
     }
   }
+
   return arr.map(function( a ){ return ~~a; }); // floor all other numbers
 }
 
@@ -14,8 +16,8 @@ const calculateValuePercentArray = (total, values): number[] => {
   let percentSum = 0;
 
   values.forEach((value) => {
-    let percentValue = value / total * 100;
-    let roundedPercentValue = Math.round(percentValue);
+    const percentValue = value / total * 100;
+    const roundedPercentValue = Math.round(percentValue);
 
     percentSum += roundedPercentValue;
 

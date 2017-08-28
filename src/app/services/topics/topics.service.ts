@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import calculateValuePercentArray from './calculate-value-percent-array';
+import calculateValuePercentArray from '../../shared/helpers/calculations/calculate-value-percent-array';
 import { WebsocketsService } from '../websockets/websockets.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import randomColor from '../../shared/helpers/random/random-color';
 
 const TOPICS: string[] = [
   'Services',
@@ -20,13 +21,15 @@ const VOTES: {topic: string, count: number, percent: number}[] = [
     return {
       topic,
       count: 0,
-      percent: 0
+      percent: 0,
+      color: randomColor()
     };
   }),
   {
     topic: 'not voted',
     count: 0,
-    percent: 0
+    percent: 0,
+    color: randomColor()
   }
 ];
 
