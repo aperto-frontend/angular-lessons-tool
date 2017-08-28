@@ -12,6 +12,7 @@ import { VoteComponent } from './components/vote/vote.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { BarComponent } from './components/bar-chart/bar.component';
 import { IterablePipe } from './pipes/iterable.pipe';
+import { ParentPercentWidthDirective } from './directive/parent-percent-width.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { IterablePipe } from './pipes/iterable.pipe';
     VoteComponent,
     BarChartComponent,
     BarComponent,
-    IterablePipe
+    IterablePipe,
+    ParentPercentWidthDirective
   ],
   imports: [
     BrowserModule,
