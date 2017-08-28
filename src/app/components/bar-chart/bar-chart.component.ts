@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 export class BarChartComponent implements OnInit {
 
   @Input()
-  topicVotes: any[];
+  items: any[];
 
   constructor() { }
 
