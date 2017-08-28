@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+}
+
+
+.layout-wrapper > .layout:nth-child(1) {
+  flex: 0;
+}
+
+.layout-wrapper >  .layout:nth-child(2) {
+  flex: 1;
+}

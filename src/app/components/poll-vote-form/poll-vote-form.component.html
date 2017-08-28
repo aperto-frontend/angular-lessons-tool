@@ -1,0 +1,12 @@
+<div class="poll-vote-form">
+  <div class="layout-align-item" *ngFor="let topic of topics; let i = index;">
+    <div class="form-item">
+      <input [id]="i" type="radio" [(ngModel)]="selectedTopic" [value]="topic" />
+      <label [attr.for]="i">{{topic}}</label>
+    </div>
+  </div>
+  <button (click)="vote()">Vote</button>
+  <pre>
+    {{topicVotes | json}}
+  </pre>
+</div>
