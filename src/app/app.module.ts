@@ -10,13 +10,17 @@ import { WebsocketsService } from './services/websockets/websockets.service';
 import { TopicsService } from './services/topics/topics.service';
 import { VoteComponent } from './components/vote/vote.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { BarComponent } from './components/bar-chart/bar.component';
+import { IterablePipe } from './pipes/iterable.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PollVoteFormComponent,
     VoteComponent,
-    BarChartComponent
+    BarChartComponent,
+    BarComponent,
+    IterablePipe
   ],
   imports: [
     BrowserModule,
