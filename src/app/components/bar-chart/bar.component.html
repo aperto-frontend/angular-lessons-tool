@@ -1,6 +1,7 @@
 <div class="bar">
   <div class="bar-value"
        [style.backgroundColor]="barData.color || '#00FF00'"
-       [style.width]="barData.percent + '%'">
+       [appParentPercentWidth]="barData.percent">
+    <span class="bar-percent">{{barData.percent}} %</span>
   </div>
 </div>

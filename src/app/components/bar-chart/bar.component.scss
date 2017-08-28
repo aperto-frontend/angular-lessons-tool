@@ -16,11 +16,29 @@
 }
 
 .bar {
+  position: relative;
   min-width: 100%;
+  border-radius: 2px;
   height: map-get($vote-dimensions, height);
   background-color: #eeeeee;
 }
 
 .bar-value {
   height: map-get($vote-dimensions, height);
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.4s ease-in-out;
+}
+
+.bar-percent {
+  position: absolute;
+  display: block;
+  font-size: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  padding: 2px;
+  height: calc(#{map-get($vote-dimensions, height)} - 8px);
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 50%;
 }
