@@ -14,6 +14,9 @@ import { BarComponent } from './components/bar-chart/bar.component';
 import { IterablePipe } from './pipes/iterable.pipe';
 import { ParentPercentWidthDirective } from './directive/parent-percent-width.directive';
 import { TopicsService } from './services/topics/topics.service';
+import { DescriptionListComponent } from './components/description-list/description-list.component';
+import { TopicDescriptionListComponent } from './components/topic-description-list/topic-description-list.component';
+import { ExampleDescriptionListComponent } from './components/example-description-list/example-description-list.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,21 @@ import { TopicsService } from './services/topics/topics.service';
     BarChartComponent,
     BarComponent,
     IterablePipe,
-    ParentPercentWidthDirective
+    ParentPercentWidthDirective,
+    DescriptionListComponent,
+    TopicDescriptionListComponent,
+    ExampleDescriptionListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    VotesService,
+    TopicsService,
+    WebsocketsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

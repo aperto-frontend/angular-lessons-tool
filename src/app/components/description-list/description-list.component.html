@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let item of items">
+    {{item.title}}
+    <ul>
+      <li *ngFor="let subitem of item.list">
+        {{subitem}}
+      </li>
+    </ul>
+  </li>
+</ul>

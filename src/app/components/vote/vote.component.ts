@@ -9,11 +9,9 @@ import { ITopic } from '../../interfaces/topic.interface';
   selector: 'app-vote',
   templateUrl: './vote.component.html',
   styleUrls: ['./vote.component.scss'],
-  providers: [VotesService, TopicsService, WebsocketsService]
+  providers: []
 })
 export class VoteComponent implements OnInit {
-
-  @Input() topicsData: ITopic[];
 
   votes$: Observable<any>;
 
@@ -27,8 +25,6 @@ export class VoteComponent implements OnInit {
   ngOnInit() {
     this.topics = this.topicsService.getTopics();
     this.votes$ = this.votesService.votes$;
-
-    this.votes$.subscribe((vote) => console.log(vote));
   }
 
   onSelectedTopicChange(selectedTopic) {
