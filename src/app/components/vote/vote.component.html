@@ -1,6 +1,6 @@
 <app-poll-vote-form class="layout"
                     (selectedTopicChange)="onSelectedTopicChange($event)"
-                    [topicVotes]="topicVotes$ | async"
+                    [topicVotes]="votes$ | async"
                     [topics]="topics">
 </app-poll-vote-form>
-<app-bar-chart class="layout" [items]="topicVotes$ | async"></app-bar-chart>
+<app-bar-chart class="layout" [items]="votes$ | async"></app-bar-chart>
