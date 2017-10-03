@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WebsocketsService } from './services/websockets/websockets.service';
-import { TopicsService } from './services/topics/topics.service';
+import { VotesService } from './services/votes/votes.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,9 @@ import { TopicsService } from './services/topics/topics.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'AngulAr SESsion Topic VOte';
+  title = 'Angular Session Tool';
 
-  constructor(websocketsService: WebsocketsService, topicsService: TopicsService) {
+  constructor() {
 
   }
 }

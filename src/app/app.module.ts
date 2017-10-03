@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { PollVoteFormComponent } from './components/poll-vote-form/poll-vote-form.component';
 
 import { WebsocketsService } from './services/websockets/websockets.service';
-import { TopicsService } from './services/topics/topics.service';
+import { VotesService } from './services/votes/votes.service';
 import { VoteComponent } from './components/vote/vote.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { BarComponent } from './components/bar-chart/bar.component';
@@ -29,7 +29,7 @@ import { ParentPercentWidthDirective } from './directive/parent-percent-width.di
     FormsModule,
     HttpModule
   ],
-  providers: [WebsocketsService, TopicsService],
+  providers: [WebsocketsService, VotesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
