@@ -13,6 +13,7 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { BarComponent } from './components/bar-chart/bar.component';
 import { IterablePipe } from './pipes/iterable.pipe';
 import { ParentPercentWidthDirective } from './directive/parent-percent-width.directive';
+import { TopicsService } from './services/topics/topics.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ParentPercentWidthDirective } from './directive/parent-percent-width.di
     FormsModule,
     HttpModule
   ],
-  providers: [WebsocketsService, VotesService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

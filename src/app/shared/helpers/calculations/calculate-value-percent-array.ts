@@ -24,7 +24,7 @@ const calculateValuePercentArray = (total, values): number[] => {
     valuePercentArray.push(roundedPercentValue);
   });
 
-  if (percentSum !== 100) {
+  if (percentSum !== 100 && valuePercentArray.length) {
     valuePercentArray = evenRound(valuePercentArray);
   }
 
