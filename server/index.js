@@ -16,8 +16,6 @@ wss.on('connection', function connection(ws, req) {
 
         try {
 
-            console.log(message);
-
             const messageObj = JSON.parse(message);
 
             if (messageObj.pollVotes) {

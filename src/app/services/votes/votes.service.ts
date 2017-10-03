@@ -4,73 +4,79 @@ import { WebsocketsService } from '../websockets/websockets.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import randomColor from '../../shared/helpers/random/random-color';
 import { TopicsService } from '../topics/topics.service';
+import { Vote } from '../../models/vote.model';
 
-const TOPICS: string[] = [
-  'Services',
-  'Routing',
-  'Forms',
-  'Authentication',
-  'Animations',
-  'Testing',
-  'Modules',
-  'Observables',
-  'ngrx/store',
-];
-
-const VOTES: {topic: string, count: number, percent: number}[] = [
-  ...TOPICS.map((topic, index) => {
-    return {
-      topic,
-      count: 0,
-      percent: 0,
-      color: randomColor()
-    };
-  }),
-  {
-    topic: 'not voted',
-    count: 0,
-    percent: 0,
-    color: randomColor()
-  }
-];
+let voteNumber = 1;
 
 @Injectable()
 export class VotesService {
 
-  votes$: BehaviorSubject<{topic: string, count: number, percent: number}[]> = new BehaviorSubject([]);
+  private _votes: Vote[] = [];
+
+  votes$: BehaviorSubject<Vote[]> = new BehaviorSubject([]);
 
   constructor(
     private websocketsService: WebsocketsService,
     private topicsService: TopicsService
   ) {
-    this.setTopicVotesPercentage = this.setTopicVotesPercentage.bind(this);
+    this.setVotesPercentage = this.setVotesPercentage.bind(this);
 
-    this.votes$.next(this.topicsService.getTopics());
+    this.votes$.next(this.getVotes());
 
     this.websocketsService
-      .connect()
-      .subscribe(this.setTopicVotesPercentage);
+      .connect(`poll/${voteNumber++}`)
+      .subscribe(this.setVotesPercentage);
   }
 
-  getTopicVotes() {
-    return TOPICS;
+  getVotes(): Vote[] {
+    const topics = this.topicsService.getTopics();
+    const notVotedDefault = new Vote({
+        title: 'not voted',
+        count: 0,
+        percent: 0,
+        color: randomColor()
+    });
+
+    this._votes = topics.reduce((prev, next) => {
+      const foundVote = this._votes.filter((vote) => vote.title === next.title)[0];
+      if (foundVote) {
+        prev.push(foundVote);
+      } else {
+        prev.push(new Vote({
+          title: next.title,
+          count: 0,
+          percent: 0,
+          color: randomColor()
+        }));
+      }
+
+      return prev;
+    }, []);
+
+    this._votes.push(notVotedDefault);
+
+    return this._votes;
   }
 
-  setTopicVotesPercentage(message) {
+  setVotesPercentage(message) {
     const rawMessageVoteData = JSON.parse(message.data);
-    const currentVoteData = JSON.parse(JSON.stringify(VOTES));
+    const currentVoteData = JSON.parse(JSON.stringify(this.getVotes()));
     let totalCount = 0;
+
+    console.log(message);
 
     Object.keys(rawMessageVoteData).forEach(vote => {
       let index = currentVoteData.length - 1;
       currentVoteData.filter((currentVote, i) => {
-        if (currentVote.topic === rawMessageVoteData[vote]) {
+        if (currentVote.title === rawMessageVoteData[vote]) {
           index = i;
         }
       });
 
-      currentVoteData[index].count++;
-      totalCount++;
+      if (currentVoteData[index]) {
+        currentVoteData[index].count++;
+        totalCount++;
+      }
     });
 
     const countArray = currentVoteData.map((item) => {
@@ -85,7 +91,7 @@ export class VotesService {
     this.votes$.next(resultArray);
   }
 
-  closeTopicVote() {
+  closeVote() {
     this.websocketsService.close();
   }
 }

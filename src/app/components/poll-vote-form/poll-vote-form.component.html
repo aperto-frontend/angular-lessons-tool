@@ -1,8 +1,8 @@
 <div class="poll-vote-form">
-  <div class="layout-align-item" *ngFor="let topic of topics; let i = index;">
+  <div class="layout-align-item" *ngFor="let topic of topics;">
     <div class="form-item">
-      <input [id]="i" type="radio" [(ngModel)]="selectedTopic" [value]="topic" />
-      <label [attr.for]="i">{{topic}}</label>
+      <input [id]="topic.uid" type="radio" [(ngModel)]="selectedTopic" [value]="topic" />
+      <label [attr.for]="topic.uid">{{topic.title}}</label>
     </div>
   </div>
   <div class="layout-align-item">
