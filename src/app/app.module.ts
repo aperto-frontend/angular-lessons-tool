@@ -17,6 +17,7 @@ import { TopicsService } from './services/topics/topics.service';
 import { DescriptionListComponent } from './components/description-list/description-list.component';
 import { TopicDescriptionListComponent } from './components/topic-description-list/topic-description-list.component';
 import { ExampleDescriptionListComponent } from './components/example-description-list/example-description-list.component';
+import { DescriptionsService } from './services/descriptions/descriptions.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ExampleDescriptionListComponent } from './components/example-descriptio
   providers: [
     VotesService,
     TopicsService,
-    WebsocketsService
+    WebsocketsService,
+    DescriptionsService
   ],
   bootstrap: [AppComponent]
 })
