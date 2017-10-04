@@ -11,11 +11,14 @@ export class TopicsService {
     this.addTopic = this.addTopic.bind(this);
 
     this.addTopics({
-      uid: 'yes',
-      title: 'Yes'
+      uid: 'forms',
+      title: 'Forms'
     }, {
-      uid: 'no',
-      title: 'No'
+      uid: 'typescript',
+      title: 'TypeScript'
+    }, {
+      uid: 'observables',
+      title: 'Observables'
     });
   }
 

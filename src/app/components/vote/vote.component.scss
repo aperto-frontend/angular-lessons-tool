@@ -1,5 +1,9 @@
 :host {
   display: flex;
+
+  ::ng-deep .form-item label {
+    font-weight: normal;
+  }
 }
 
 
